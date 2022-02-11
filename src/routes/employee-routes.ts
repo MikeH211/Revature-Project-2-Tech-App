@@ -4,7 +4,7 @@ import Employee from "../models/employee";
 
 
 export default class EmployeeRoutes {
-    private static address:string = "http://20.75.185.122:3000";
+    private static address:string = "https://wk-revature-functions.azurewebsites.net/api/tech-page-relay";
 
     public static async createEmployee(employee:{
         fname:string, 
@@ -13,13 +13,13 @@ export default class EmployeeRoutes {
         isManager:boolean,
         password:string}): Promise<AxiosResponse<Employee> | void> {
         
-        return axios.post<Employee>(`${this.address}/employees`, employee)
+        return axios.post<Employee>(`${this.address}`, employee)
             .then((r) => r)
             .catch((error) => {axiosErrorHandler(error)});
     }
     
     public static async getEmployees(): Promise<AxiosResponse<Employee[]> | void> {
-        return axios.get<Employee[]>(`${this.address}/employees`)
+        return axios.get<Employee[]>(`${this.address}`)
         .then((r) => r)
         .catch((error) => {axiosErrorHandler(error)});
     }
