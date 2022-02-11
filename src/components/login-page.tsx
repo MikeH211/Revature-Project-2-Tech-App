@@ -1,5 +1,6 @@
 import { useMsal } from '@azure/msal-react';
 import { useEffect, useState } from 'react';
+import logo from '../images/travel_logo2.png';
 
 export default function LoginPage() {
 
@@ -17,9 +18,10 @@ export default function LoginPage() {
     },[login, instance.instance]);
 
     return (<>
-        <div className="container">
-        <h1>Triple Threat Vacations Technology Specialist Site </h1>
-            <button title='Login' onClick={()=> setLogin({...login})}>Login</button>
+        <div className='d-flex flex-column align-items-center'>
+            <h1>Triple Threat Vacations Technology Specialist Site </h1>
+            <button className="btn btn-lg btn-primary w-25" title='Login' onClick={()=> setLogin({...login})}>Login</button>
+            <img className='img-fluid' alt='Triple Threat Logo' src={logo}/>
         </div>
     </>)
 }
