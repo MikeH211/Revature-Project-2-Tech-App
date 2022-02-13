@@ -23,4 +23,8 @@ export default class EmployeeRoutes {
         .then((r) => r)
         .catch((error) => {axiosErrorHandler(error)});
     }
+
+    public static async updateEmployee(id:number, password:string): Promise<AxiosResponse<string> | void> {
+        return axios.patch(`${this.address}`, {id, password});
+    }
 }

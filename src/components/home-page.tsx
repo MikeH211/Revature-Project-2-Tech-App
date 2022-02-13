@@ -17,6 +17,12 @@ export default function HomePage() {
         (async () => {
             const response = await EmployeeRoutes.getEmployees();
             if(response && response.status === 200) {
+                response.data.sort((e1, e2) => {
+                    if(e1.isManager === e2.isManager) {
+                        return e1.id - e2.id;
+                    }
+                    return e1.isManager ? 1 : -1;
+                })
                 setEmployees(response.data);
             }
         })();
@@ -47,7 +53,7 @@ export default function HomePage() {
         <CreateEmployeeForm />
         <table className="table table-hover">
             <thead>
-                <tr><th>ID</th><th>First Name</th><th>Last Name</th><th>Username</th><th>Manager</th></tr>
+                <tr><th>ID</th><th>First Name</th><th>Last Name</th><th>Username</th><th>Manager</th><th>Update Password</th></tr>
             </thead>
             <tbody>
                 {employees.map(e => <EmployeeLineItem key={e.id} {...e}/>)}
